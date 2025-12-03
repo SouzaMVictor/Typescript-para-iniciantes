@@ -6,6 +6,7 @@
 // const empresas = ["Google", "Facebook", "Amazon"];
 // console.log(frase.toLocaleUpperCase())
 // console.log(total.toFixed(1)) // retorna uma *string* com 1 casa decimal --> 100.0
+Object.defineProperty(exports, "__esModule", { value: true });
 // const mapempresas = empresas.map((empresas) => {
 //     empresas.toLocaleLowerCase()
 // });
@@ -47,3 +48,4 @@ function somar(a, b) {
     return a + b;
 }
 console.log(somar(2, 5));
+//# sourceMappingURL=ts-para-iniciantes.js.map
