@@ -76,25 +76,48 @@
 // }
 // console.log(normalizarTexto("   Olá MUNDo   "));
 // //olá mundo
-var input = document.querySelector("input");
-var total = localStorage.getItem("total");
-if (input && total) {
-    input.value = total;
-    calcularGanho(Number(input.value));
-}
-function calcularGanho(value) {
-    var p = document.querySelector("p");
-    if (p) {
-        p.innerText = "ganho total: ".concat(value + 100 - value * 0.2);
-    }
-}
-function totalMudou() {
-    if (input) {
-        var value = Number(input.value);
-        localStorage.setItem("total", input.value);
-        calcularGanho(Number(input.value));
-    }
-}
-if (input) {
-    input.addEventListener("keyup", totalMudou);
-}
+// const input = document.querySelector("input");
+// const total = localStorage.getItem("total");
+// if (input && total) {
+//   input.value = total;
+//   calcularGanho(Number(input.value));
+// }
+// function calcularGanho(value: number) {
+//   const p = document.querySelector("p");
+//   if (p) {
+//     p.innerText = `ganho total: ${value + 100 - value * 0.2}`;
+//   }
+// }
+// function totalMudou() {
+//   if (input) {
+//     const value = Number(input.value);
+//     localStorage.setItem("total", input.value);
+//     calcularGanho(Number(input.value));
+//   }
+// }
+// if (input) {
+//   input.addEventListener("keyup", totalMudou);
+// }
+// aula 202 string number e boolean ==========================================================
+// const frase: string = 'Front End';
+// const preco: number = 500;
+// const condi: boolean = preco > 100;
+// console.log(typeof frase);
+// console.log(typeof preco);
+// console.log(typeof condi);
+// if (typeof frase === "string"){
+//     //importante type guard. nesse caso, so vai trabalhar com ela se for string
+//     frase.toLocaleLowerCase();
+//     console.log("é uma string");
+// } else{
+//     console.log("não é uma string")
+// }
+var frase1 = new String("Front End");
+//new gera objeto do tipo string
+var frase2 = String("Front End");
+//executa a função string e retorna uma primitiva do tipo string
+var frase3 = "Front End";
+console.log(frase1);
+console.log(typeof frase2);
+console.log(frase3);
+// //=========================================================

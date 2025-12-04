@@ -1,4 +1,3 @@
-
 //=====================================================
 //aula 1
 // const frase = "Front-end";
@@ -19,7 +18,6 @@
 
 // const button = document.querySelector("button");// seleciona o que pode ser um botao ou null
 // button.click(); //se for null vai dar erro, o que é o caso
-
 
 // const operação = 100 + {};
 // console.log(operação);
@@ -67,7 +65,6 @@
 //     ano: 1988
 // }
 
-
 // const barato: boolean | string = 200 <  400 ? true : "caro"
 
 // function somar (a:number,b:number){
@@ -99,27 +96,56 @@
 // console.log(normalizarTexto("   Olá MUNDo   "));
 // //olá mundo
 
-const input = document.querySelector("input");
-const total = localStorage.getItem("total");
+// const input = document.querySelector("input");
+// const total = localStorage.getItem("total");
 
-if (input && total) {
-  input.value = total;
-  calcularGanho(Number(input.value));
-}
+// if (input && total) {
+//   input.value = total;
+//   calcularGanho(Number(input.value));
+// }
 
-function calcularGanho(value: number) {
-  const p = document.querySelector("p");
-  if (p) {
-    p.innerText = `ganho total: ${value + 100 - value * 0.2}`;
-  }
-}
-function totalMudou() {
-  if (input) {
-    const value = Number(input.value);
-    localStorage.setItem("total", input.value);
-    calcularGanho(Number(input.value));
-  }
-}
-if (input) {
-  input.addEventListener("keyup", totalMudou);
-}
+// function calcularGanho(value: number) {
+//   const p = document.querySelector("p");
+//   if (p) {
+//     p.innerText = `ganho total: ${value + 100 - value * 0.2}`;
+//   }
+// }
+// function totalMudou() {
+//   if (input) {
+//     const value = Number(input.value);
+//     localStorage.setItem("total", input.value);
+//     calcularGanho(Number(input.value));
+//   }
+// }
+// if (input) {
+//   input.addEventListener("keyup", totalMudou);
+// }
+
+// aula 202 string number e boolean ==========================================================
+
+// const frase: string = 'Front End';
+// const preco: number = 500;
+// const condi: boolean = preco > 100;
+
+// console.log(typeof frase);
+// console.log(typeof preco);
+// console.log(typeof condi);
+
+// if (typeof frase === "string"){
+//     //importante type guard. nesse caso, so vai trabalhar com ela se for string
+//     frase.toLocaleLowerCase();
+//     console.log("é uma string");
+// } else{
+//     console.log("não é uma string")
+// }
+
+const frase1 = new String("Front End");
+//new gera objeto do tipo string
+const frase2 = String("Front End");
+//executa a função string e retorna uma primitiva do tipo string
+const frase3 = "Front End";
+
+console.log(frase1);
+console.log(typeof frase2);
+console.log(frase3);
+// //=========================================================
