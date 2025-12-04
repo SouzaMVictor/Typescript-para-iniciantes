@@ -1,3 +1,4 @@
+
 //=====================================================
 //aula 1
 // const frase = "Front-end";
@@ -18,6 +19,7 @@
 
 // const button = document.querySelector("button");// seleciona o que pode ser um botao ou null
 // button.click(); //se for null vai dar erro, o que é o caso
+
 
 // const operação = 100 + {};
 // console.log(operação);
@@ -64,6 +66,7 @@
 //     marca: "ford",
 //     ano: 1988
 // }
+
 
 // const barato: boolean | string = 200 <  400 ? true : "caro"
 
