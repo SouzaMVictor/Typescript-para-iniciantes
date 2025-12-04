@@ -1,4 +1,3 @@
-
 //=====================================================
 //aula 1
 // const frase = "Front-end";
@@ -19,7 +18,6 @@
 
 // const button = document.querySelector("button");// seleciona o que pode ser um botao ou null
 // button.click(); //se for null vai dar erro, o que é o caso
-
 
 // const operação = 100 + {};
 // console.log(operação);
@@ -67,7 +65,6 @@
 //     ano: 1988
 // }
 
-
 // const barato: boolean | string = 200 <  400 ? true : "caro"
 
 // function somar (a:number,b:number){
@@ -98,3 +95,28 @@
 
 // console.log(normalizarTexto("   Olá MUNDo   "));
 // //olá mundo
+
+const input = document.querySelector("input");
+const total = localStorage.getItem("total");
+
+if (input && total) {
+  input.value = total;
+  calcularGanho(Number(input.value));
+}
+
+function calcularGanho(value: number) {
+  const p = document.querySelector("p");
+  if (p) {
+    p.innerText = `ganho total: ${value + 100 - value * 0.2}`;
+  }
+}
+function totalMudou() {
+  if (input) {
+    const value = Number(input.value);
+    localStorage.setItem("total", input.value);
+    calcularGanho(Number(input.value));
+  }
+}
+if (input) {
+  input.addEventListener("keyup", totalMudou);
+}
