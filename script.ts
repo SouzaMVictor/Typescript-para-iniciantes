@@ -40,4 +40,4 @@ function toNumber (value: number | string){
         throw "value deve ser um number | string"
     }
 }
-console.log(toNumber(20))
+console.log(toNumber("20"))
