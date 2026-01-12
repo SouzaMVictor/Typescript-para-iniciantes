@@ -5,6 +5,7 @@
     "allowJs": true,
     "module": "nodenext",
     "target": "esnext",
+    "lib": ["ESNext", "DOM"],
     "types": [],
     "sourceMap": true,
     "declaration": true,

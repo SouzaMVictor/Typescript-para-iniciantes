@@ -21,3 +21,4 @@ console.log(isNumber(200));
 //true
 console.log(isNumber("200"));
 //false
+
