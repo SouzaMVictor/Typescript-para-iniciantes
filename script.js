@@ -121,6 +121,7 @@
 //     </div>
 //     `
 // }
+//trabalhando com arrays
 var numeros = [12, 20, 30, 50, 60];
 var valores = [5, 3, 8, "taxa", 4, "12"];
 function maiorQueDez(data) {
@@ -131,3 +132,9 @@ function filtrarValores(data) {
 }
 filtrarValores(valores);
 maiorQueDez(numeros);
+//arrays dentro de arrays
+var dados = [
+    ["clifford", 10],
+    ["margarida", 6],
+    ["scooby", 4]
+];

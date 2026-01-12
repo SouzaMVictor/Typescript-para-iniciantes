@@ -143,17 +143,20 @@
 //     </div>
 //     `
 // }
+//trabalhando com arrays
 const numeros = [12,20,30,50,60]
 const valores = [5,3,8,"taxa",4, "12"]
-function maiorQueDez(data: number[]){
+function maiorQueDez(data: Array<number>){
    return data.filter( n => n >10)
 }
-function filtrarValores(data: (string|number)[]){
+function filtrarValores(data: Array<number | string>){
     return data.filter(v => typeof v === "number")
 }
 filtrarValores(valores)
 maiorQueDez(numeros)
-
+//arrays dentro de arrays
 const dados = [
-    []
+    ["clifford", 10],
+    ["margarida", 6],
+    ["scooby", 4]
 ]
