@@ -206,23 +206,83 @@
 
 //any type
 
-function normalizar(texto: string){
-    //por padrao é any, colocado implicitamente
-    return texto.trim().toLowerCase();
+// function normalizar(texto: string){
+//     //por padrao é any, colocado implicitamente
+//     return texto.trim().toLowerCase();
+// }
+// console.log(normalizar(" TeXtO qUalQueR."))
+// // console.log(normalizar(2000))
+// // ts da erro se colocar o numero, pq o any foi removido
+
+// // as vezes o any faz sentido
+
+// async function fetchJSON(url: string){
+//     const response = await fetch(url);
+//     const data = await response.json();
+//     // nesse caso o any faz sentido pq pode vir qualquer coisa dentro do json
+//    manipularData(data);
+// }
+
+// function manipularData(data: {nome: string}){
+//     console.log(data.nome);
+// }
+
+
+
+// null e undefined
+
+//null é ausencia de valor, comum em funcoes no dom
+
+const button = document.querySelector("button");
+const config = localStorage.getItem("config");
+
+//antes de colocar qualquer elemento de dom, verificar se ele existe ou nao
+if (button !== null){
+    button.click();
 }
-console.log(normalizar(" TeXtO qUalQueR."))
-// console.log(normalizar(2000))
-// ts da erro se colocar o numero, pq o any foi removido
+//checagem convencional
 
-// as vezes o any faz sentido
+if(button){
+    button.click();
 
-async function fetchJSON(url: string){
-    const response = await fetch(url);
-    const data = await response.json();
-    // nesse caso o any faz sentido pq pode vir qualquer coisa dentro do json
-   manipularData(data);
+}
+//checagem simplificada booleana
+
+
+button?.click();
+// checagem com optional chaining
+
+//undefined
+//propriedade foi instaciada mas sem valor na memoria
+
+let total;
+console.log(total)
+//retorna undefined
+//mesma coisa com funções, vai dar undefined
+
+
+//propriedade opcional
+
+interface Produto{
+    nome?: string;
 }
 
-function manipularData(data: {nome: string}){
-    console.log(data.nome);
+const jogo: Produto ={
+    nome: "ragnarok"
+}
+const livro: Produto ={
+}
+
+jogo.nome;
+//ao passar o mouse por cima de nome, ele mostra que pode ser string ou undefined
+livro.nome;
+//ele permite criar com nome pq pode ou nao ter
+
+jogo.nome?.toLocaleUpperCase();
+livro.nome.toLocaleUpperCase();
+//se nao colocar o ? vai dar erroo no runtime pq ele pode ser undefined
+
+// pode ser feita outra verificação comum
+if (jogo.nome){
+    jogo.nome.toLocaleUpperCase();
 }
