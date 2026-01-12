@@ -175,34 +175,70 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 //     ["scooby", 4]
 // ]
 //exercicio com arrays 
-function fetchCursos() {
+// async function fetchCursos() {
+//   const response = await fetch('https://api.origamid.dev/json/cursos.json');
+//   const data = await response.json();
+//   console.log(data)
+//   mostrarCursos(data);
+// }
+// fetchCursos();
+// interface Curso{
+//     nome: string;
+//     aulas: number;
+//     gratuito: boolean;
+//     horas: number;
+//     idAulas: number[];
+//     nivel: "iniciante" | "avancado";
+//     tags: string[]
+// }
+// function mostrarCursos(cursos: Curso[]) {
+//     cursos.forEach(curso => {
+//         let color;
+//         curso.nivel === "iniciante" ? color = "blue" : color = "red";
+//         // if (curso.nivel === "iniciante"){
+//         //     color = "blue";
+//         // } else if (curso.nivel === "avancado"){
+//         //     color = "red"; 
+//         // }
+//     document.body.innerHTML += `
+//         <div>
+//             <h2 style="color: ${color}">${curso.nome}</h2>
+//             <p>Horas: ${curso.horas}</p>
+//             <p>Aulas: ${curso.aulas}</p>
+//             <p>Tipo: ${curso.gratuito ? "Gratuito" : "Pago"}</p>
+//             <p>Tags: ${curso.tags.join(", ")}</p>
+//             <p>ID: ${curso.idAulas.join(" | ")}</p>
+//         </div>
+//     `
+//     })
+// }
+//any type
+function normalizar(texto) {
+    //por padrao é any, colocado implicitamente
+    return texto.trim().toLowerCase();
+}
+console.log(normalizar(" TeXtO qUalQueR."));
+// console.log(normalizar(2000))
+// ts da erro se colocar o numero, pq o any foi removido
+// as vezes o any faz sentido
+function fetchJSON(url) {
     return __awaiter(this, void 0, void 0, function () {
         var response, data;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, fetch('https://api.origamid.dev/json/cursos.json')];
+                case 0: return [4 /*yield*/, fetch(url)];
                 case 1:
                     response = _a.sent();
                     return [4 /*yield*/, response.json()];
                 case 2:
                     data = _a.sent();
-                    console.log(data);
-                    mostrarCursos(data);
+                    // nesse caso o any faz sentido pq pode vir qualquer coisa dentro do json
+                    manipularData(data);
                     return [2 /*return*/];
             }
         });
     });
 }
-fetchCursos();
-function mostrarCursos(cursos) {
-    cursos.forEach(function (curso) {
-        var color;
-        curso.nivel === "iniciante" ? color = "blue" : color = "red";
-        // if (curso.nivel === "iniciante"){
-        //     color = "blue";
-        // } else if (curso.nivel === "avancado"){
-        //     color = "red"; 
-        // }
-        document.body.innerHTML += "\n        <div>\n            <h2 style=\"color: ".concat(color, "\">").concat(curso.nome, "</h2>\n            <p>Horas: ").concat(curso.horas, "</p>\n            <p>Aulas: ").concat(curso.aulas, "</p>\n            <p>Tipo: ").concat(curso.gratuito ? "Gratuito" : "Pago", "</p>\n            <p>Tags: ").concat(curso.tags.join(", "), "</p>\n            <p>ID: ").concat(curso.idAulas.join(" | "), "</p>\n        </div>\n    ");
-    });
+function manipularData(data) {
+    console.log(data.nome);
 }

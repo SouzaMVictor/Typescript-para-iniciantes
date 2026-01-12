@@ -162,43 +162,67 @@
 // ]
 //exercicio com arrays 
 
-async function fetchCursos() {
-  const response = await fetch('https://api.origamid.dev/json/cursos.json');
-  const data = await response.json();
-  console.log(data)
-  mostrarCursos(data);
+// async function fetchCursos() {
+//   const response = await fetch('https://api.origamid.dev/json/cursos.json');
+//   const data = await response.json();
+//   console.log(data)
+//   mostrarCursos(data);
+// }
+
+// fetchCursos();
+
+// interface Curso{
+//     nome: string;
+//     aulas: number;
+//     gratuito: boolean;
+//     horas: number;
+//     idAulas: number[];
+//     nivel: "iniciante" | "avancado";
+//     tags: string[]
+// }
+// function mostrarCursos(cursos: Curso[]) {
+//     cursos.forEach(curso => {
+//         let color;
+//         curso.nivel === "iniciante" ? color = "blue" : color = "red";
+//         // if (curso.nivel === "iniciante"){
+//         //     color = "blue";
+//         // } else if (curso.nivel === "avancado"){
+//         //     color = "red"; 
+//         // }
+
+//     document.body.innerHTML += `
+//         <div>
+//             <h2 style="color: ${color}">${curso.nome}</h2>
+//             <p>Horas: ${curso.horas}</p>
+//             <p>Aulas: ${curso.aulas}</p>
+//             <p>Tipo: ${curso.gratuito ? "Gratuito" : "Pago"}</p>
+//             <p>Tags: ${curso.tags.join(", ")}</p>
+//             <p>ID: ${curso.idAulas.join(" | ")}</p>
+//         </div>
+//     `
+//     })
+// }
+
+
+//any type
+
+function normalizar(texto: string){
+    //por padrao é any, colocado implicitamente
+    return texto.trim().toLowerCase();
+}
+console.log(normalizar(" TeXtO qUalQueR."))
+// console.log(normalizar(2000))
+// ts da erro se colocar o numero, pq o any foi removido
+
+// as vezes o any faz sentido
+
+async function fetchJSON(url: string){
+    const response = await fetch(url);
+    const data = await response.json();
+    // nesse caso o any faz sentido pq pode vir qualquer coisa dentro do json
+   manipularData(data);
 }
 
-fetchCursos();
-
-interface Curso{
-    nome: string;
-    aulas: number;
-    gratuito: boolean;
-    horas: number;
-    idAulas: number[];
-    nivel: "iniciante" | "avancado";
-    tags: string[]
-}
-function mostrarCursos(cursos: Curso[]) {
-    cursos.forEach(curso => {
-        let color;
-        curso.nivel === "iniciante" ? color = "blue" : color = "red";
-        // if (curso.nivel === "iniciante"){
-        //     color = "blue";
-        // } else if (curso.nivel === "avancado"){
-        //     color = "red"; 
-        // }
-
-    document.body.innerHTML += `
-        <div>
-            <h2 style="color: ${color}">${curso.nome}</h2>
-            <p>Horas: ${curso.horas}</p>
-            <p>Aulas: ${curso.aulas}</p>
-            <p>Tipo: ${curso.gratuito ? "Gratuito" : "Pago"}</p>
-            <p>Tags: ${curso.tags.join(", ")}</p>
-            <p>ID: ${curso.idAulas.join(" | ")}</p>
-        </div>
-    `
-    })
+function manipularData(data: {nome: string}){
+    console.log(data.nome);
 }
