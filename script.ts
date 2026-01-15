@@ -352,4 +352,16 @@
 // // nao sabe se é livro ou jogo
 
 
-// //extends
+// instance of 3 exercicio
+
+// trocar o link de http por https
+const link = document.getElementById('origamid');
+//definiu a varivel com o id
+// link. sozinho nem aparece href pq o ts nao sabe se é nulo ou um html anchor element
+// as classes desse link sao htmlanchor element que foi criada a partir de um htmlelement
+//visto a partir da verificação no .dir
+//fazer verificação
+ if(link instanceof HTMLAnchorElement){
+    link.href = link.href.replace("http://", "https://");    
+ }
+// nem sempre classe que o ts retorna é a final portanto preciso fazer a verificação
