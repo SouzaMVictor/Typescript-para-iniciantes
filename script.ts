@@ -443,7 +443,7 @@
 // addEventListener
 // tipo de evento que vai ocorrer e qual função de callback
 
-const button = document.querySelector('button');
+// const button = document.querySelector('button');
 
 // function handleClick(evento: Event){
 //     console.log(evento)
@@ -452,36 +452,63 @@ const button = document.querySelector('button');
 // event nao tem todas as propriedades e metodos necessarios 
 
 
-function handleClick(evento: PointerEvent){
-    console.log(evento.pageX)
+// function handleClick(evento: PointerEvent){
+//     console.log(evento.pageX)
     // pointervent é mais especifico, seja pra mouse, dedo na tela ou canetinha
-}
-button?.addEventListener('pointerdown', handleClick)
+// }
+// button?.addEventListener('pointerdown', handleClick)
 
 
-function handleScroll(evento: Event){
-    console.log(evento)
+// function handleScroll(evento: Event){
+//     console.log(evento)
     // Event {isTrusted: true, type: 'scroll', target: document, currentTarget: Window, eventPhase: 3, …}
-}
-window.addEventListener('scroll', handleScroll)
+// }
+// window.addEventListener('scroll', handleScroll)
 // scroll nao é um evento de u elemento especifico mas sim da janela inteira
 
 
-function ativarMenu(evento: Event){
+// function ativarMenu(evento: Event){
     // function ativarMenu(evento: MouseEvent){
     // function ativarMenu(evento: PointerEvent){
     // function ativarMenu(evento: PointerEvent | MouseEvent | KeyboardEvent){
-    if (evento instanceof MouseEvent){
-        console.log(evento.pageX)   
-    }
+    // if (evento instanceof MouseEvent){
+        // console.log(evento.pageX)   
+    // }
         //cuidado com eventos que nao tem no Event
         // necessario fazer verificação 
-}
+// }
 
-document.documentElement.addEventListener('mousedown', ativarMenu)
+// document.documentElement.addEventListener('mousedown', ativarMenu)
 // mouse down nao tem no touch event
-document.documentElement.addEventListener('touchstart', ativarMenu)
+// document.documentElement.addEventListener('touchstart', ativarMenu)
 // touch start nao tem no mouse event
-window.addEventListener('keydown', ativarMenu)
+// window.addEventListener('keydown', ativarMenu)
 // keydwon nao tem no mouse event nem pointer event
 
+// eventos e callback 2
+
+// const button = document.querySelector('button');
+
+// function handleClick(this: HTMLButtonElement, event: MouseEvent){
+//     console.log(this)
+//     // faz referencia ao objeto que foi usado pra ativar a função
+// }
+// button?.addEventListener('click', handleClick)
+// melhor nao usar o this dessee jeito e sim com um target e currenttarget
+
+const button = document.querySelector('button');
+
+function handleClick( event: MouseEvent){
+    // const elemento = event.currentTarget; 
+    // if (elemento instanceof HTMLButtonElement){
+    //     console.log(elemento)
+    // }
+    // event target ou null
+    // problema é que é do tipo button
+    //necessario verificar se é instancia de button element, ai ele permite usar as props do botao
+    
+    if (event.currentTarget instanceof HTMLButtonElement){
+        console.log(event.currentTarget.innerText)
+    }
+}
+button?.addEventListener('click', handleClick)
