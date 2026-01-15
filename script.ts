@@ -46,7 +46,6 @@
 
 // // // // definir um objeto é bem parecido no ts
 
-
 // // // // type Produto= {
 // // // //     nome: string;
 // // // //     preco: number;
@@ -92,9 +91,8 @@
 // // // //     }
 // // // // }
 // // // // preencehrCategoria("programação");
-// // // // preencehrCategoria("marketing");    
+// // // // preencehrCategoria("marketing");
 // // // // preencehrCategoria("desenvolvimento");
-
 
 // // // //204 type e interface: interface
 
@@ -103,7 +101,6 @@
 // // // //     preco: number;
 // // // //     teclado: boolean;
 // // // // }
-
 
 // // // //204 type e interface: exercicio
 // // // async function fetchProduct(){
@@ -160,7 +157,7 @@
 // // //     ["margarida", 6],
 // // //     ["scooby", 4]
 // // // ]
-// // //exercicio com arrays 
+// // //exercicio com arrays
 
 // // // async function fetchCursos() {
 // // //   const response = await fetch('https://api.origamid.dev/json/cursos.json');
@@ -187,7 +184,7 @@
 // // //         // if (curso.nivel === "iniciante"){
 // // //         //     color = "blue";
 // // //         // } else if (curso.nivel === "avancado"){
-// // //         //     color = "red"; 
+// // //         //     color = "red";
 // // //         // }
 
 // // //     document.body.innerHTML += `
@@ -202,7 +199,6 @@
 // // //     `
 // // //     })
 // // // }
-
 
 // // //any type
 
@@ -227,8 +223,6 @@
 // // //     console.log(data.nome);
 // // // }
 
-
-
 // // // null e undefined
 
 // // //null é ausencia de valor, comum em funcoes no dom
@@ -248,7 +242,6 @@
 // // }
 // // //checagem simplificada booleana
 
-
 // // button?.click();
 // // // checagem com optional chaining
 
@@ -259,7 +252,6 @@
 // // console.log(total)
 // // //retorna undefined
 // // //mesma coisa com funções, vai dar undefined
-
 
 // // //propriedade opcional
 
@@ -288,7 +280,6 @@
 // //     jogo.nome.toLocaleUpperCase();
 // // }
 
-
 // //objetos e instancias
 // //classes e funcoes construtoras
 
@@ -308,15 +299,13 @@
 
 // console.log(livro.precoReal())
 
-
 // //instance of
 
 // console.log(livro instanceof Produto)
 // //true
 
-
 // class Livro {
-//     autor: string;    
+//     autor: string;
 //     constructor(autor: string){
 //         this.autor = autor;
 //     }
@@ -351,7 +340,6 @@
 // // produto1?.autor;
 // // nao sabe se é livro ou jogo
 
-
 // instance of 3 exercicio
 
 // trocar o link de http por https
@@ -362,7 +350,7 @@
 // //visto a partir da verificação no .dir
 // //fazer verificação
 //  if(link instanceof HTMLAnchorElement){
-//     link.href = link.href.replace("http://", "https://");    
+//     link.href = link.href.replace("http://", "https://");
 //  }
 // // nem sempre classe que o ts retorna é a final portanto preciso fazer a verificação
 
@@ -370,13 +358,46 @@
 // como saber quais tipos de elementos o  QS pode retornar
 //https://developer.mozilla.org/en-US/docs/Web/API/
 
-const video = document.querySelector('#videoprincipal')
-// quando usado o id "#" o ts nao sabe que eh um video element e coloca como Element | null
-// verificar com instanceof o video element
+// const video = document.querySelector('#videoprincipal')
+// // quando usado o id "#" o ts nao sabe que eh um video element e coloca como Element | null
+// // verificar com instanceof o video element
 
-if(video instanceof HTMLVideoElement){
-    // video?.volume
-    // nao preciso do opcional chaining pq ja foi verificado que nao pode ser null
+// if(video instanceof HTMLVideoElement){
+//     // video?.volume
+//     // nao preciso do opcional chaining pq ja foi verificado que nao pode ser null
 
-    console.log(video.volume);
-}
+//     console.log(video.volume);
+// }
+
+// query selector 2
+// qsAll
+// retorna uma nodelist de elementos
+
+const links = document.querySelectorAll(".link");
+//node list de Element s
+// console.log(NodeListOf)
+// NodelistOf é uma interface
+// da certo se eun definit links: NodeListOf
+console.log(links)
+// NodeList(3) [a.link, a.link, button.link]
+
+console.log(links instanceof NodeList);
+// retorna true
+
+links.forEach((link) => {
+  if (link instanceof HTMLAnchorElement) {
+    console.log(link.href);
+    // link sozinho nao vai funcionar pq o ts ts so sabe que é um element, mas o button la nao tem href
+  }
+});
+// nodelist tambem tem for each 
+// qsAll nao pode ser tratado como array!porem pode transfomrar
+const dados = [1,2,3];
+
+const arrayLinks = Array.from(links)
+// array de elementos
+const anchorLinks = arrayLinks.filter((link) => link instanceof HTMLAnchorElement);
+// agora pode usar filter
+
+console.log(anchorLinks);
+// (2) [a.link, a.link]
