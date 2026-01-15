@@ -355,13 +355,28 @@
 // instance of 3 exercicio
 
 // trocar o link de http por https
-const link = document.getElementById('origamid');
-//definiu a varivel com o id
-// link. sozinho nem aparece href pq o ts nao sabe se é nulo ou um html anchor element
-// as classes desse link sao htmlanchor element que foi criada a partir de um htmlelement
-//visto a partir da verificação no .dir
-//fazer verificação
- if(link instanceof HTMLAnchorElement){
-    link.href = link.href.replace("http://", "https://");    
- }
-// nem sempre classe que o ts retorna é a final portanto preciso fazer a verificação
+// const link = document.getElementById('origamid');
+// //definiu a varivel com o id
+// // link. sozinho nem aparece href pq o ts nao sabe se é nulo ou um html anchor element
+// // as classes desse link sao htmlanchor element que foi criada a partir de um htmlelement
+// //visto a partir da verificação no .dir
+// //fazer verificação
+//  if(link instanceof HTMLAnchorElement){
+//     link.href = link.href.replace("http://", "https://");    
+//  }
+// // nem sempre classe que o ts retorna é a final portanto preciso fazer a verificação
+
+// query selector no ts
+// como saber quais tipos de elementos o  QS pode retornar
+//https://developer.mozilla.org/en-US/docs/Web/API/
+
+const video = document.querySelector('#videoprincipal')
+// quando usado o id "#" o ts nao sabe que eh um video element e coloca como Element | null
+// verificar com instanceof o video element
+
+if(video instanceof HTMLVideoElement){
+    // video?.volume
+    // nao preciso do opcional chaining pq ja foi verificado que nao pode ser null
+
+    console.log(video.volume);
+}
