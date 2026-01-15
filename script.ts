@@ -373,31 +373,66 @@
 // qsAll
 // retorna uma nodelist de elementos
 
+// const links = document.querySelectorAll(".link");
+// //node list de Element s
+// // console.log(NodeListOf)
+// // NodelistOf é uma interface
+// // da certo se eun definit links: NodeListOf
+// console.log(links)
+// // NodeList(3) [a.link, a.link, button.link]
+
+// console.log(links instanceof NodeList);
+// // retorna true
+
+// links.forEach((link) => {
+//   if (link instanceof HTMLAnchorElement) {
+//     console.log(link.href);
+//     // link sozinho nao vai funcionar pq o ts ts so sabe que é um element, mas o button la nao tem href
+//   }
+// });
+// // nodelist tambem tem for each 
+// // qsAll nao pode ser tratado como array!porem pode transfomrar
+// const dados = [1,2,3];
+
+// const arrayLinks = Array.from(links)
+// // array de elementos
+// const anchorLinks = arrayLinks.filter((link) => link instanceof HTMLAnchorElement);
+// // agora pode usar filter
+
+// console.log(anchorLinks);
+// // (2) [a.link, a.link]
+
+// qs 3 exercicio 
+
 const links = document.querySelectorAll(".link");
-//node list de Element s
-// console.log(NodeListOf)
-// NodelistOf é uma interface
-// da certo se eun definit links: NodeListOf
-console.log(links)
-// NodeList(3) [a.link, a.link, button.link]
 
-console.log(links instanceof NodeList);
-// retorna true
+// function ativarElemento(elemento: Element){
+//     elemento.style
+// }
+// nao deixa passar pq diz que nao tem style no element
 
-links.forEach((link) => {
-  if (link instanceof HTMLAnchorElement) {
-    console.log(link.href);
-    // link sozinho nao vai funcionar pq o ts ts so sabe que é um element, mas o button la nao tem href
-  }
-});
-// nodelist tambem tem for each 
-// qsAll nao pode ser tratado como array!porem pode transfomrar
-const dados = [1,2,3];
+function ativarElemento(elemento: HTMLElement){
+    elemento.style.color = 'red';
+    elemento.style.border = '2px solid red';
 
-const arrayLinks = Array.from(links)
-// array de elementos
-const anchorLinks = arrayLinks.filter((link) => link instanceof HTMLAnchorElement);
-// agora pode usar filter
+}
+// links.forEach((link) =>{
+//     if (link instanceof HTMLAnchorElement)
+//     ativarElemento(link)
+// })
+// nao pinta o botao pq botao no é htmlanchorelement
 
-console.log(anchorLinks);
-// (2) [a.link, a.link]
+// links.forEach((link) =>{
+//     if (link instanceof HTMLAnchorElement || link instanceof HTMLButtonElement){
+//         ativarElemento(link)
+//     }
+// })
+// mais complexo do que deveria
+
+links.forEach((link =>{
+    if (link instanceof HTMLElement){
+        ativarElemento(link)
+    }
+}))
+// tanto o a tanto o button herdam o htmlelement
+// 
