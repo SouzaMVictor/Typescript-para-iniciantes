@@ -541,25 +541,110 @@
 // 8 passo - verificar se o botao esta ativo ou nao para voltar os estados dos aria
     // se contem a classe active
         // nav for diferente de null como é boolean 
-const btnMobile = document.getElementById('btn-mobile')
+// const btnMobile = document.getElementById('btn-mobile')
 
-function toggleMenu(event: PointerEvent){
-    const nav = document.getElementById('nav')
-    const button = event.currentTarget;
+// function toggleMenu(event: PointerEvent){
+//     const nav = document.getElementById('nav')
+//     const button = event.currentTarget;
    
 
-    if(button instanceof HTMLElement && nav){
-        const active = nav.classList.contains('active');
-        if(active){
-            nav?.classList.remove('active');
-            button.setAttribute('aria-expanded', 'false')
-            button.setAttribute('aria-label', 'Abrir menu')
-        }else{
-            nav.classList.add('active');
-            button.setAttribute('aria-expanded', 'true')
-            button.setAttribute('aria-label', 'Fechar menu')
-        }
+//     if(button instanceof HTMLElement && nav){
+//         const active = nav.classList.contains('active');
+//         if(active){
+//             nav?.classList.remove('active');
+//             button.setAttribute('aria-expanded', 'false')
+//             button.setAttribute('aria-label', 'Abrir menu')
+//         }else{
+//             nav.classList.add('active');
+//             button.setAttribute('aria-expanded', 'true')
+//             button.setAttribute('aria-label', 'Fechar menu')
+//         }
         
-    }
+//     }
+// }
+// btnMobile?.addEventListener('pointerdown', toggleMenu)
+
+
+
+// generics 1
+// tipo generico é a forma de declaarar um parametro para nossa função classe ou interface
+// function retorno(a: string | number | boolean){
+//     return a;
+// }
+
+// console.log(retorno('a game').tolowe)
+// console.log(retorno(200))
+// console.log(retorno(true))
+// no caso de tentar acessar os metodos do retorno, ele nao consgue pq nao sabe o tipo correto
+
+// function retorno<variavel>(a: variavel): variavel{
+//     return a;
+// }
+
+// console.log(retorno('A gaMe').toLocaleLowerCase())
+// console.log(retorno(200))
+// console.log(retorno(true))
+
+
+// const numeros = [1,2,3,4,5,6,7,8,9];
+// const frutas = ["banana", "pera","uva","maçã","limão", "laranja" ];
+
+// function firstFive<TipoLista>(lista: TipoLista[]): TipoLista[]{
+//     return lista.slice(0,5);
+    
+// }
+
+// console.log(firstFive(numeros));
+// console.log(firstFive(frutas));
+
+
+// function notNull(arg:string){
+//     if (arg!= null) return arg;
+//     else return null
+// }
+
+// console.log(notNull('victor')?.toLocaleUpperCase())
+// bom mas se for qualquer coisa alem de string ele nao vai deixar vir
+// importante passar un tipo generico
+
+
+// function notNull2<T>(arg:T){
+//     if (arg!= null) return arg;
+//     else return null;
+// }
+
+// console.log(notNull2(200)?.toLocaleUpperCase())
+// console.log(notNull2(200)?.toFixed())
+
+// tipo generico vai impedir de colocar um metodo errado 
+
+
+// function tipoDado(a:string){
+//     const result = {
+//         dado: a,
+//         tipo: typeof a,
+//     };
+//     console.log(result)
+//     // {dado: 'teste'}
+//     return result
+// }
+
+// tipoDado("teste")
+
+// queremos colocar qualquer dado como parametro
+
+function tipoDado<T> (a: T) {
+    const result = {
+        dado: a,
+        tipo: typeof a,
+    };
+    console.log(result)
+    return result
 }
-btnMobile?.addEventListener('pointerdown', toggleMenu)
+
+tipoDado("teste")
+// {dado: 'teste', tipo: 'string'}
+tipoDado(200)
+// {dado: 200, tipo: 'number'}
+tipoDado(true)
+// {dado: true, tipo: 'boolean'}
