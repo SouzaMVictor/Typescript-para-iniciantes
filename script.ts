@@ -496,9 +496,9 @@
 // button?.addEventListener('click', handleClick)
 // melhor nao usar o this dessee jeito e sim com um target e currenttarget
 
-const button = document.querySelector('button');
+// const button = document.querySelector('button');
 
-function handleClick( event: MouseEvent){
+// function handleClick( event: MouseEvent){
     // const elemento = event.currentTarget; 
     // if (elemento instanceof HTMLButtonElement){
     //     console.log(elemento)
@@ -507,8 +507,59 @@ function handleClick( event: MouseEvent){
     // problema é que é do tipo button
     //necessario verificar se é instancia de button element, ai ele permite usar as props do botao
     
-    if (event.currentTarget instanceof HTMLButtonElement){
-        console.log(event.currentTarget.innerText)
+    // if (event.currentTarget instanceof HTMLButtonElement){
+        // console.log(event.currentTarget.innerText)
+    // }
+// }
+// button?.addEventListener('click', handleClick)
+
+
+// eventos e callback 3 exercicio
+
+// Estado dos elementos - criar o ts que ativa e inativa o menu
+
+// menu inativo:
+// class="" em nav
+// aria-expanded="false" em button
+// aria-label="Abrir Menu" em button
+
+// menu ativo:
+// class="active" em nav
+// aria-expanded="true" em button
+// aria-label="Fechar Menu" em button
+
+
+// 1 passo - selecionar botão
+// 2 passo - adicionar evento de pointerdown, ja que é mais abrangente
+    // ja verificando a existencia do botão com o optional chaining
+// 3 passo - criar a função do toggle menu com o evento de PointerEvent
+// 4 passo - dentro da função selecionar o nav
+// 5 passo - criar uma constante button que recebe o event.currentTarget
+    // é o elemento recebeu o eventlistener 
+// 6 passo - adicionar um toggle com a classe active no nav
+// 7 passo - verificar se o button é instance of de HTMLElement e adicionar os atributos
+// 8 passo - verificar se o botao esta ativo ou nao para voltar os estados dos aria
+    // se contem a classe active
+        // nav for diferente de null como é boolean 
+const btnMobile = document.getElementById('btn-mobile')
+
+function toggleMenu(event: PointerEvent){
+    const nav = document.getElementById('nav')
+    const button = event.currentTarget;
+   
+
+    if(button instanceof HTMLElement && nav){
+        const active = nav.classList.contains('active');
+        if(active){
+            nav?.classList.remove('active');
+            button.setAttribute('aria-expanded', 'false')
+            button.setAttribute('aria-label', 'Abrir menu')
+        }else{
+            nav.classList.add('active');
+            button.setAttribute('aria-expanded', 'true')
+            button.setAttribute('aria-label', 'Fechar menu')
+        }
+        
     }
 }
-button?.addEventListener('click', handleClick)
+btnMobile?.addEventListener('pointerdown', toggleMenu)
