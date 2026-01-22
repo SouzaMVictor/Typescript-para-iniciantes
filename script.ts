@@ -679,28 +679,90 @@
 // exemplo de tipo generico numa api
 
 // função pra pegar dados da api
-async function getData<T>(url:string): Promise<T>{
+// async function getData<T>(url:string): Promise<T>{
     // assumindo T como tipo generico e colocando como promise 
-    const response = await fetch(url);
-    return await response.json()
-}
+//     const response = await fetch(url);
+//     return await response.json()
+// }
 
-interface Notebook{
-    nome: string
-    preco: number
-}
+// interface Notebook{
+//     nome: string
+//     preco: number
+// }
 // criando a interface ele perde o tipo any pega esses metodos da interface
 
 // função pra lidar com o dado da api
-async function handleData(){
-    const notebook: Notebook = await getData<Notebook>(
+// async function handleData(){
+//     const notebook: Notebook = await getData<Notebook>(
         // assumi Notebook pra ser a interface de notebook
         // assumindo o tipo Notebook pro getdata 
-        "https://api.origamid.dev/json/notebook.json"
-    )
-    console.log(notebook)
-    console.log(notebook.nome)
-    console.log(notebook.preco)
+//         "https://api.origamid.dev/json/notebook.json"
+//     )
+//     console.log(notebook)
+//     console.log(notebook.nome)
+//     console.log(notebook.preco)
+// }
+
+// handleData()
+
+
+// functions 1
+
+// interfaces sao criadas em todos os tipos de funções
+// função normal declarada
+// function somar (a: number, b:number,c?: number): number{
+    // c pode ser numero ou undefined caso nao seja usado
+    // return a+b
+// }
+
+// somar (3,5)
+// arrow function
+// const subtrair =(a: number, b: number) => a-b;
+
+// subtrair(4,3)
+
+// como tipo, dificilmente usado
+// type Callback = (event: MouseEvent) => void
+
+
+// void
+// no js, uma função sem return é undefined
+// no ts, uma função sem return é void
+
+
+function pintarTela(cor: string){
+    document.body.style.background = cor
 }
 
-handleData()
+pintarTela("wheat")
+// function pintarTela(cor: string): void pq a função nao tem retorno
+
+function isString(value: any){
+    if(typeof value === 'string'){
+        return true
+    }
+}
+console.log(isString('teste'))
+// true
+console.log(isString(200))
+// undefined
+
+
+
+// functions 2 
+// retorno never
+// funções que geram erro ou abortam a aplicação
+
+
+// function abortar (mensagem: string):{
+// ai fica void
+
+function abortar (mensagem: string):never{
+    throw new Error(mensagem)
+}
+abortar('um erro ocorreu aqui')
+console.log('tente novamente')
+// unreacheable code
+
+// metodos dentro das interfaces
+
