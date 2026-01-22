@@ -737,14 +737,14 @@ function pintarTela(cor: string){
 pintarTela("wheat")
 // function pintarTela(cor: string): void pq a função nao tem retorno
 
-function isString(value: any){
-    if(typeof value === 'string'){
-        return true
-    }
-}
-console.log(isString('teste'))
+// function isString(value: any){
+//     if(typeof value === 'string'){
+//         return true
+//     }
+// }
+// console.log(isString('teste'))
 // true
-console.log(isString(200))
+// console.log(isString(200))
 // undefined
 
 
@@ -766,11 +766,42 @@ console.log(isString(200))
 
 // metodos dentro das interfaces
 
-interface Quadrado {
-    lado: number
-    perimetro(lado: number): number
+// interface Quadrado {
+//     lado: number
+//     perimetro(lado: number): number
+// }
+
+// function calcular(forma: Quadrado){
+//     forma.lado
+// }
+
+// overload
+function normalizar(valor: string[]): string[];
+function normalizar (valor: string): string;
+function normalizar(valor: string | string[]): string | string[] {
+    if (typeof valor === 'string'){
+        return valor.trim().toLowerCase()
+    }else {
+        return valor.map((item) => item.trim().toLowerCase())
+    }
 }
 
-function calcular(forma: Quadrado){
-    forma.lado
+console.log(normalizar(" proDuTO aQQUI "))
+console.log(normalizar(" proDuTO aQQUI ").toUpperCase())
+// produto aqqui
+// problema: como foi dito que pode ser tanto string ou array de strings, ts nao sabe qual vai ser e nao deixa colocar os metodos, nem de string e nem array
+// necessario adicionar ofunction overload pra deixar explicito quais tipos podem ser
+console.log(normalizar(['Banana', 'baNana', 'UVa     ']))
+console.log(normalizar(['Banana', 'baNana', 'UVa     ']).filter)
+
+function $(seletor: 'a'): HTMLAnchorElement | null;
+function $(seletor: 'video'): HTMLVideoElement | null;
+function $(seletor: string): HTMLVideoElement | null;
+// a declaração dos overloads devem respeitar a ordem da chamada das funções
+function $(seletor:string): Element | null{
+    return document.querySelector(seletor);
 }
+
+$('a')?.click();
+$('a');
+$('.item');

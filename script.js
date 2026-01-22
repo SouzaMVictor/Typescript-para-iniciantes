@@ -2,6 +2,7 @@
 // // // // //     return a + b;
 // // // // // }
 // // // // // somar(2,4)
+var _a;
 // // // // // 203 union types (|)
 // // // // // let total: string| number = 200;
 // // // // // total ="4000";
@@ -584,15 +585,25 @@ function pintarTela(cor) {
     document.body.style.background = cor;
 }
 pintarTela("wheat");
-// function pintarTela(cor: string): void pq a função nao tem retorno
-function isString(value) {
-    if (typeof value === 'string') {
-        return true;
+function normalizar(valor) {
+    if (typeof valor === 'string') {
+        return valor.trim().toLowerCase();
+    }
+    else {
+        return valor.map(function (item) { return item.trim().toLowerCase(); });
     }
 }
-console.log(isString('teste'));
-// true
-console.log(isString(200));
-function calcular(forma) {
-    forma.lado;
+console.log(normalizar(" proDuTO aQQUI "));
+console.log(normalizar(" proDuTO aQQUI ").toUpperCase());
+// produto aqqui
+// problema: como foi dito que pode ser tanto string ou array de strings, ts nao sabe qual vai ser e nao deixa colocar os metodos, nem de string e nem array
+// necessario adicionar ofunction overload pra deixar explicito quais tipos podem ser
+console.log(normalizar(['Banana', 'baNana', 'UVa     ']));
+console.log(normalizar(['Banana', 'baNana', 'UVa     ']).filter);
+// a declaração dos overloads devem respeitar a ordem da chamada das funções
+function $(seletor) {
+    return document.querySelector(seletor);
 }
+(_a = $('a')) === null || _a === void 0 ? void 0 : _a.click();
+$('a');
+$('.item');
