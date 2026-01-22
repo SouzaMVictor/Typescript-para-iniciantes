@@ -757,12 +757,20 @@ console.log(isString(200))
 // function abortar (mensagem: string):{
 // ai fica void
 
-function abortar (mensagem: string):never{
-    throw new Error(mensagem)
-}
-abortar('um erro ocorreu aqui')
-console.log('tente novamente')
+// function abortar (mensagem: string):never{
+//     throw new Error(mensagem)
+// }
+// abortar('um erro ocorreu aqui')
+// console.log('tente novamente')
 // unreacheable code
 
 // metodos dentro das interfaces
 
+interface Quadrado {
+    lado: number
+    perimetro(lado: number): number
+}
+
+function calcular(forma: Quadrado){
+    forma.lado
+}

@@ -593,16 +593,6 @@ function isString(value) {
 console.log(isString('teste'));
 // true
 console.log(isString(200));
-// undefined
-// functions 2 
-// retorno never
-// funções que geram erro ou abortam a aplicação
-// function abortar (mensagem: string):{
-// ai fica void
-// function abortar (mensagem: string):never{
-//     throw new Error(mensagem)
-// }
-// abortar('um erro ocorreu aqui')
-// console.log('tente novamente')
-// unreacheable code
-// metodos dentro das interfaces
+function calcular(forma) {
+    forma.lado;
+}
