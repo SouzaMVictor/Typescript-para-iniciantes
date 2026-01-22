@@ -633,18 +633,74 @@
 
 // queremos colocar qualquer dado como parametro
 
-function tipoDado<T> (a: T) {
-    const result = {
-        dado: a,
-        tipo: typeof a,
-    };
-    console.log(result)
-    return result
+// function tipoDado<T> (a: T) {
+//     const result = {
+//         dado: a,
+//         tipo: typeof a,
+//     };
+//     console.log(result)
+//     return result
+// }
+
+// tipoDado("teste")
+// {dado: 'teste', tipo: 'string'}
+// tipoDado(200)
+// {dado: 200, tipo: 'number'}
+// tipoDado(true)
+// {dado: true, tipo: 'boolean'}
+
+// function extractText(el: HTMLElement){
+//     return el.innerText
+// }
+
+// const link = document.querySelector('a')
+
+// if(link){
+//     console.log(extractText(link))
+// }
+// assim funciona, mas e se retornar um objeto?
+
+
+// function extractText<Tipo extends HTMLElement>(el: Tipo){
+//     return{
+//     text: el.innerText,
+//     el
+//     }
+// }
+
+// const link = document.querySelector('a')
+
+// if(link){
+    // console.log(extractText(link).el)
+    // el está como htmlelement, perdeu a referencia que era anchor element,
+    // apos adiiconar que o tipo generico Tipo para o el e extender que é um html element, ele volta a ser anchor element
+// }
+
+// exemplo de tipo generico numa api
+
+// função pra pegar dados da api
+async function getData<T>(url:string): Promise<T>{
+    // assumindo T como tipo generico e colocando como promise 
+    const response = await fetch(url);
+    return await response.json()
 }
 
-tipoDado("teste")
-// {dado: 'teste', tipo: 'string'}
-tipoDado(200)
-// {dado: 200, tipo: 'number'}
-tipoDado(true)
-// {dado: true, tipo: 'boolean'}
+interface Notebook{
+    nome: string
+    preco: number
+}
+// criando a interface ele perde o tipo any pega esses metodos da interface
+
+// função pra lidar com o dado da api
+async function handleData(){
+    const notebook: Notebook = await getData<Notebook>(
+        // assumi Notebook pra ser a interface de notebook
+        // assumindo o tipo Notebook pro getdata 
+        "https://api.origamid.dev/json/notebook.json"
+    )
+    console.log(notebook)
+    console.log(notebook.nome)
+    console.log(notebook.preco)
+}
+
+handleData()
